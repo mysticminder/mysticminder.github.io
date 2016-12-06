@@ -2,18 +2,22 @@
 <html>
     <head>
         <title>MysticMinder.org</title>
-        <style> .logo{
-  display: block;
-  text-indent: 10px;
-  width: 900px;
-  height: 900px;
-  background: url(img/mystic.svg);
-            opacity: 0.75;
-            background-size: 1000px 1000px;}
+        <style> 
+            $(document).ready(function(){
+                $('#slider1') .cycle({
+                    fx: 'fade', // here change effect to blindX, blindY, blindZ etc 
+                    speed: 'slow', 
+                    timeout: 2000 
+                });
+            }); 
         </style>
     </head>
     <body>
-        <a href="/" class="logo">
-</a>
+<ul id="slider1">
+<li><img border="0" src="img/1.jpg" width="624" height="345" /></li>
+<li><img border="0" src="img/2.jpg" width="624" height="345" /></li>
+<li><img border="0" src="img/3.jpg" width="624" height="345" /></li>
+<li><img border="0" src="img/4.jpg" width="624" height="345" /></li>
+</ul>
     </body>
  </html>
