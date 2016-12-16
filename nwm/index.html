@@ -29,7 +29,7 @@
                 minZoom: 11,
                 center: new google.maps.LatLng(42.445911, -71.089409),
                 disableDefaultUI: true,
-               // styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}]
+                // styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}]
                 styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"administrative.country","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.locality","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.neighborhood","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"},{"visibility":"off"}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape.natural.landcover","elementType":"all","stylers":[{"visibility":"off"},{"color":"#da2f2f"}]},{"featureType":"landscape.natural.terrain","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45},{"visibility":"off"},{"color":"#fcfcfc"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}]
             };
 
@@ -45,52 +45,36 @@
 
 
             var contribLayer = new google.maps.Data();
-             contribLayer.loadGeoJson('contrib/ARLINGTON.geojson');
-             contribLayer.loadGeoJson('contrib/BELMONT.geojson');
-             contribLayer.loadGeoJson('contrib/BOSTON.geojson');
-             contribLayer.loadGeoJson('contrib/BURLINGTON.geojson');
-             contribLayer.loadGeoJson('contrib/CAMBRIDGE.geojson');
-             contribLayer.loadGeoJson('contrib/CHELSEA.geojson');
-             contribLayer.loadGeoJson('contrib/EVERETT.geojson');
-             contribLayer.loadGeoJson('contrib/LEXINGTON.geojson');
-             contribLayer.loadGeoJson('contrib/MALDEN.geojson');
-             contribLayer.loadGeoJson('contrib/MEDFORD.geojson');
-             contribLayer.loadGeoJson('contrib/MELROSE.geojson');
-             contribLayer.loadGeoJson('contrib/READING.geojson');
-             contribLayer.loadGeoJson('contrib/REVERE.geojson');
-             contribLayer.loadGeoJson('contrib/SOMERVILLE.geojson');
-             contribLayer.loadGeoJson('contrib/STONEHAM.geojson');
-             contribLayer.loadGeoJson('contrib/WAKEFIELD.geojson');
-             contribLayer.loadGeoJson('contrib/WATERTOWN.geojson');
-             contribLayer.loadGeoJson('contrib/WILMINGTON.geojson');
-             contribLayer.loadGeoJson('contrib/WINCHESTER.geojson');
-             contribLayer.loadGeoJson('contrib/WINTHROP.geojson');
-             contribLayer.loadGeoJson('contrib/WOBURN.geojson');
-             contribLayer.setStyle({
-             fillColor: 'black',
-             fillOpacity: 0.1,
-             strokeWeight: 1,
-             strokeColor: 'darkgrey',
-             strokeOpacity: 0
+            contribLayer.loadGeoJson('contrib/ARLINGTON.geojson');
+            contribLayer.loadGeoJson('contrib/BELMONT.geojson');
+            contribLayer.loadGeoJson('contrib/BOSTON.geojson');
+            contribLayer.loadGeoJson('contrib/BURLINGTON.geojson');
+            contribLayer.loadGeoJson('contrib/CAMBRIDGE.geojson');
+            contribLayer.loadGeoJson('contrib/CHELSEA.geojson');
+            contribLayer.loadGeoJson('contrib/EVERETT.geojson');
+            contribLayer.loadGeoJson('contrib/LEXINGTON.geojson');
+            contribLayer.loadGeoJson('contrib/MALDEN.geojson');
+            contribLayer.loadGeoJson('contrib/MEDFORD.geojson');
+            contribLayer.loadGeoJson('contrib/MELROSE.geojson');
+            contribLayer.loadGeoJson('contrib/READING.geojson');
+            contribLayer.loadGeoJson('contrib/REVERE.geojson');
+            contribLayer.loadGeoJson('contrib/SOMERVILLE.geojson');
+            contribLayer.loadGeoJson('contrib/STONEHAM.geojson');
+            contribLayer.loadGeoJson('contrib/WAKEFIELD.geojson');
+            contribLayer.loadGeoJson('contrib/WATERTOWN.geojson');
+            contribLayer.loadGeoJson('contrib/WILMINGTON.geojson');
+            contribLayer.loadGeoJson('contrib/WINCHESTER.geojson');
+            contribLayer.loadGeoJson('contrib/WINTHROP.geojson');
+            contribLayer.loadGeoJson('contrib/WOBURN.geojson');
+            contribLayer.setStyle({
+                fillColor: 'black',
+                fillOpacity: 0.1,
+                strokeWeight: 1,
+                strokeColor: 'darkgrey',
+                strokeOpacity: 0
 
-             });
-             contribLayer.setMap(map);
-
-
-
-
-
-            /*            map.data.addListener('click', function (event) {
-             if (event.feature.getGeometry().getType() === 'Polygon') {
-             var myHTML = event.feature.getProperty("TOWN");
-             infowindow.setContent("<div style='width:150px; text-align: center;'>"+myHTML+"</div>");
-             infowindow.setPosition(event.feature.getGeometry().center);
-             // infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
-             infowindow.open(map);
-             };
-             });*/
-
-
+            });
+            contribLayer.setMap(map);
 
 
             var townsLayer = new google.maps.Data();
@@ -124,6 +108,8 @@
                 strokeOpacity: 0.2
 
             });
+            townsLayer.setMap(map);
+
 
 
             var fsize = 16
@@ -296,11 +282,50 @@
             });
 
 
+
+
+            /*            map.data.addListener('click', function (event) {
+             if (event.feature.getGeometry().getType() === 'Polygon') {
+             var myHTML = event.feature.getProperty("TOWN");
+             infowindow.setContent("<div style='width:150px; text-align: center;'>"+myHTML+"</div>");
+             infowindow.setPosition(event.feature.getGeometry().center);
+             // infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
+             infowindow.open(map);
+             };
+             });*/
+
+
+            var activeLayer = new google.maps.Data();
+
+
             townsLayer.addListener('click', function (event) {
+
+                activeLayer.forEach(
+                    function(feature){
+                        activeLayer.remove(feature);
+                    }
+                );
+
                 console.log(event.latLng.toString());
+
+                console.log(event.feature.getProperty("TOWN"));
+
+
+                activeLayer.loadGeoJson('contrib/' + event.feature.getProperty("TOWN").toString() + ".geojson")
+                activeLayer.setStyle({
+                    fillColor: 'yellow',
+                    fillOpacity: 0.3,
+                    strokeWeight: 2,
+                    strokeColor: 'darkgrey',
+                    strokeOpacity: 0.2
+
+                });
+
+                activeLayer.setMap(map);
+
             });
 
-            townsLayer.setMap(map);
+
 
         }
     </script>
