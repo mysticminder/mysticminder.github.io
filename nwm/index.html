@@ -36,10 +36,7 @@
             var map = new google.maps.Map(mapElement, mapOptions);
 
             var infowindow = new google.maps.InfoWindow();
-
-
-
-
+            
             var townsLayer = new google.maps.Data();
 
             townsLayer.loadGeoJson('towns/ARLINGTON.geojson');
@@ -66,9 +63,9 @@
             townsLayer.setStyle({
                 fillColor: 'darkgrey',
                 fillOpacity: 0.3,
-                strokeWeight: 1,
+                strokeWeight: 2,
                 strokeColor: 'darkgrey',
-                strokeOpacity: 0.7
+                strokeOpacity: 0
 
             });
 
@@ -105,10 +102,6 @@
 
             });
             contribLayer.setMap(map);
-
-
-
-
 
 /*            map.data.addListener('click', function (event) {
                 if (event.feature.getGeometry().getType() === 'Polygon') {
