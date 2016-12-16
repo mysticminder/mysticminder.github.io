@@ -3,6 +3,7 @@
 <head>
     <title>MysticMinder.org</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maps.google.com/maps/api/js?v=3&key=AIzaSyBT0gp1TVw0Ha4Zhi1oprSBCbk9VD96UJw"></script>
     <script src="js/maplabel-compiled.js"></script>
     <script src="js/sortable.js"></script>
@@ -23,6 +24,12 @@
             background: yellow;
         }
 
+        .tg  {border-collapse:collapse;border-spacing:0;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;border-color:#777777;overflow:hidden;word-break:normal;}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;border-color:#777777;overflow:hidden;word-break:normal;}
+        .tg .tg-o9ov{font-family:"Trebuchet MS", Helvetica, sans-serif !important;;vertical-align:top}
+        .tg .tg-lhfu{font-family:"Trebuchet MS", Helvetica, sans-serif !important;}
+        .th {text-align:left;}
 
     </style>
 
@@ -361,6 +368,16 @@
 
 
         }
+
+        $( document ).ready(function() {
+            $("#datatable").load("https://mysticminderdata.blob.core.windows.net/latest/data.html",
+                function(){
+                    sorttable.makeSortable(document.getElementById("imported"));
+                }
+            );
+
+        });
+
     </script>
 
 </head>
@@ -370,159 +387,11 @@
 
 <!-- The element that will contain our Google Map. This is used in both the Javascript and CSS above. -->
 <div id="map"></div>
-<div style="z-index: 10; position: absolute; right: 10px;  top: 10px; min-width: 25%;
+<div id="datatable" style="z-index: 10; position: absolute; right: 10px;  top: 10px; min-width: 25%;
  max-width: 25%; min-height: 85%;">
 
 
-    <style type="text/css">
-        .tg  {border-collapse:collapse;border-spacing:0;}
-        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-        .tg th{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-        .tg .tg-o9ov{font-family:"Trebuchet MS", Helvetica, sans-serif !important;;vertical-align:top}
-        .tg .tg-lhfu{font-family:"Trebuchet MS", Helvetica, sans-serif !important;}
-        .th {text-align:left}
-    </style>
 
-    <table class="tg sortable" style="table-layout: fixed; width: 100%; background:whitesmoke;" bordercolor="#777777" >
-        <colgroup>
-            <col width="25%">
-            <col width="25%">
-            <col width="25%">
-            <col width="25%">
-        </colgroup>
-        <tr>
-            <th style="background:gainsboro" align="left" class="tg-o9ov">Town</th>
-            <th style="background:gainsboro" align="left" class="tg-o9ov">12 hr.</th>
-            <th style="background:gainsboro" align="left" class="tg-o9ov">24 hr.</th>
-            <th style="background:gainsboro" align="left" class="tg-o9ov">36 hr.</th>
-        </tr>
-        <tr id="ARLINGTON">
-            <td class="tg-o9ov">Arlington</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="BELMONT">
-            <td class="tg-o9ov">Belmont</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="BOSTON">
-            <td class="tg-o9ov">Boston</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="BURLINGTON">
-            <td class="tg-o9ov">Burlington</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="CAMBRIDGE">
-            <td class="tg-o9ov">Cambridge</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="CHELSEA">
-            <td class="tg-o9ov">Chelsea</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="EVERETT">
-            <td class="tg-o9ov">Everett</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="LEXINGTON">
-            <td class="tg-o9ov">Lexington</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="MALDEN">
-            <td class="tg-o9ov">Malden</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="MEDFORD">
-            <td class="tg-o9ov">Medford</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="MELROSE">
-            <td class="tg-o9ov">Melrose</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="READING">
-            <td class="tg-o9ov">Reading</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="REVERE">
-            <td class="tg-o9ov">Revere</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="SOMERVILLE">
-            <td class="tg-o9ov">Somerville</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="STONEHAM">
-            <td class="tg-o9ov">Stoneham</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="WAKEFIELD">
-            <td class="tg-o9ov">Wakefield</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="WATERTOWN">
-            <td class="tg-o9ov">Watertown</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="WILMINGTON">
-            <td class="tg-o9ov">Wilmington</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="WINCHESTER">
-            <td class="tg-o9ov">Winchester</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="WINTHROP">
-            <td class="tg-o9ov">Winthrop</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-        <tr id="WOBURN">
-            <td class="tg-o9ov">Woburn</td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-            <td class="tg-o9ov"></td>
-        </tr>
-    </table>
 
 
 </div>
