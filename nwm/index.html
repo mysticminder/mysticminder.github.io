@@ -317,7 +317,24 @@
                 var town = event.feature.getProperty("TOWN");
 
 
+                var redraw = function(){
+                    activeLayer.forEach(
+                        function(feature){
+                            if(feature.getProperty("TOWN") != town)
+                                activeLayer.remove(feature);
+                        }
+                    );
 
+                    activeLayer.loadGeoJson('contrib/' + event.feature.getProperty("TOWN").toString() + ".geojson")
+                    activeLayer.setStyle({
+                        fillColor: 'yellow',
+                        fillOpacity: 0.5,
+                        strokeWeight: 2,
+                        strokeColor: 'darkgrey',
+                        strokeOpacity: 0.2
+
+                    });
+                }
 
                 var priors = document.getElementsByClassName("selected");
 
@@ -325,31 +342,17 @@
                 {
                     if(priors[i].id != town){
                         priors[i].setAttribute("class", "unselected");
-
-                        activeLayer.forEach(
-                            function(feature){
-                                if(feature.getProperty("TOWN") != town)
-                                    activeLayer.remove(feature);
-                            }
-                        );
-
-                        activeLayer.loadGeoJson('contrib/' + event.feature.getProperty("TOWN").toString() + ".geojson")
-                        activeLayer.setStyle({
-                            fillColor: 'yellow',
-                            fillOpacity: 0.5,
-                            strokeWeight: 2,
-                            strokeColor: 'darkgrey',
-                            strokeOpacity: 0.2
-
-                        });
+                        redraw();
                     }
+                }
+
+                if(priors.length == 0){
+                    redraw()
                 }
 
                 console.log(town);
 
                 document.getElementById(town).setAttribute("class", "selected");
-
-
 
 
 
