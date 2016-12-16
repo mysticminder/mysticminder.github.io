@@ -19,7 +19,7 @@
             height: 100%;
             width: 100%;
         }
-        #selected{
+        .selected{
             background: yellow;
         }
 
@@ -312,34 +312,46 @@
 
             townsLayer.addListener('click', function (event) {
 
-                activeLayer.forEach(
-                    function(feature){
-                        activeLayer.remove(feature);
-                    }
-                );
 
                 console.log(event.latLng.toString());
+                var town = event.feature.getProperty("TOWN");
 
-                var prior = document.getElementById("selected")
 
-                if(prior != null) {
-                    prior.setAttribute("id", "");
+
+
+                var priors = document.getElementsByClassName("selected");
+
+                for(var i = 0; i < priors.length; i++)
+                {
+                    if(priors[i].id != town){
+                        priors[i].setAttribute("class", "unselected");
+
+                        activeLayer.forEach(
+                            function(feature){
+                                if(feature.getProperty("TOWN") != town)
+                                    activeLayer.remove(feature);
+                            }
+                        );
+
+                        activeLayer.loadGeoJson('contrib/' + event.feature.getProperty("TOWN").toString() + ".geojson")
+                        activeLayer.setStyle({
+                            fillColor: 'yellow',
+                            fillOpacity: 0.5,
+                            strokeWeight: 2,
+                            strokeColor: 'darkgrey',
+                            strokeOpacity: 0.2
+
+                        });
+                    }
                 }
 
-                var town = event.feature.getProperty("TOWN");
                 console.log(town);
 
-                document.getElementById(town).setAttribute("id", "selected");
+                document.getElementById(town).setAttribute("class", "selected");
 
-                activeLayer.loadGeoJson('contrib/' + event.feature.getProperty("TOWN").toString() + ".geojson")
-                activeLayer.setStyle({
-                    fillColor: 'yellow',
-                    fillOpacity: 0.5,
-                    strokeWeight: 2,
-                    strokeColor: 'darkgrey',
-                    strokeOpacity: 0.2
 
-                });
+
+
 
             });
 
@@ -368,7 +380,7 @@
         .th {text-align:left}
     </style>
 
-    <table class="tg sortable" style="table-layout: fixed; width: 100%; background:whitesmoke; border-color:darkslategray">
+    <table class="tg sortable" style="table-layout: fixed; width: 100%; background:whitesmoke;" bordercolor="#777777" >
         <colgroup>
             <col width="25%">
             <col width="25%">
@@ -387,121 +399,121 @@
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id ="BELMONT">
+        <tr id="BELMONT">
             <td class="tg-o9ov">Belmont</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "BOSTON">
+        <tr id="BOSTON">
             <td class="tg-o9ov">Boston</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "BURLINGTON">
+        <tr id="BURLINGTON">
             <td class="tg-o9ov">Burlington</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "CAMBRIDGE">
+        <tr id="CAMBRIDGE">
             <td class="tg-o9ov">Cambridge</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "CHELSEA">
+        <tr id="CHELSEA">
             <td class="tg-o9ov">Chelsea</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "EVERETT">
+        <tr id="EVERETT">
             <td class="tg-o9ov">Everett</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "LEXINGTON">
+        <tr id="LEXINGTON">
             <td class="tg-o9ov">Lexington</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "MALDEN">
+        <tr id="MALDEN">
             <td class="tg-o9ov">Malden</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id= "MEDFORD">
+        <tr id="MEDFORD">
             <td class="tg-o9ov">Medford</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "MELROSE">
+        <tr id="MELROSE">
             <td class="tg-o9ov">Melrose</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "READING">
+        <tr id="READING">
             <td class="tg-o9ov">Reading</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "REVERE">
+        <tr id="REVERE">
             <td class="tg-o9ov">Revere</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "SOMERVILLE">
+        <tr id="SOMERVILLE">
             <td class="tg-o9ov">Somerville</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "STONEHAM">
+        <tr id="STONEHAM">
             <td class="tg-o9ov">Stoneham</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "WAKEFIELD">
+        <tr id="WAKEFIELD">
             <td class="tg-o9ov">Wakefield</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "WATERTOWN">
+        <tr id="WATERTOWN">
             <td class="tg-o9ov">Watertown</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id= "WILMINGTON">
+        <tr id="WILMINGTON">
             <td class="tg-o9ov">Wilmington</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "WINCHESTER">
+        <tr id="WINCHESTER">
             <td class="tg-o9ov">Winchester</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "WINTHROP">
+        <tr id="WINTHROP">
             <td class="tg-o9ov">Winthrop</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
         </tr>
-        <tr id = "WOBURN">
+        <tr id="WOBURN">
             <td class="tg-o9ov">Woburn</td>
             <td class="tg-o9ov"></td>
             <td class="tg-o9ov"></td>
