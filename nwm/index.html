@@ -4,6 +4,7 @@
     <title>Snazzy Maps Super Simple Example</title>
 
     <script src="https://maps.google.com/maps/api/js?v=3&key=AIzaSyBT0gp1TVw0Ha4Zhi1oprSBCbk9VD96UJw"></script>
+    <script src="js/maplabel-compiled.js"></script>
     <style type="text/css">
         /* Set a size for our map container, the Google Map will take up 100% of this container */
         body {
@@ -25,7 +26,9 @@
             var mapOptions = {
                 zoom: 11,
                 center: new google.maps.LatLng(42.445911, -71.089409),
-                styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}]
+                disableDefaultUI: true,
+               // styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}]
+                styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"administrative.country","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.locality","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.neighborhood","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"},{"visibility":"off"}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape.natural.landcover","elementType":"all","stylers":[{"visibility":"off"},{"color":"#da2f2f"}]},{"featureType":"landscape.natural.terrain","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45},{"visibility":"off"},{"color":"#fcfcfc"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}]
             };
 
             // Get the HTML DOM element that will contain your map
@@ -36,7 +39,58 @@
             var map = new google.maps.Map(mapElement, mapOptions);
 
             var infowindow = new google.maps.InfoWindow();
-            
+
+
+
+            var contribLayer = new google.maps.Data();
+             contribLayer.loadGeoJson('contrib/ARLINGTON.geojson');
+             contribLayer.loadGeoJson('contrib/BELMONT.geojson');
+             contribLayer.loadGeoJson('contrib/BOSTON.geojson');
+             contribLayer.loadGeoJson('contrib/BURLINGTON.geojson');
+             contribLayer.loadGeoJson('contrib/CAMBRIDGE.geojson');
+             contribLayer.loadGeoJson('contrib/CHELSEA.geojson');
+             contribLayer.loadGeoJson('contrib/EVERETT.geojson');
+             contribLayer.loadGeoJson('contrib/LEXINGTON.geojson');
+             contribLayer.loadGeoJson('contrib/MALDEN.geojson');
+             contribLayer.loadGeoJson('contrib/MEDFORD.geojson');
+             contribLayer.loadGeoJson('contrib/MELROSE.geojson');
+             contribLayer.loadGeoJson('contrib/READING.geojson');
+             contribLayer.loadGeoJson('contrib/REVERE.geojson');
+             contribLayer.loadGeoJson('contrib/SOMERVILLE.geojson');
+             contribLayer.loadGeoJson('contrib/STONEHAM.geojson');
+             contribLayer.loadGeoJson('contrib/WAKEFIELD.geojson');
+             contribLayer.loadGeoJson('contrib/WATERTOWN.geojson');
+             contribLayer.loadGeoJson('contrib/WILMINGTON.geojson');
+             contribLayer.loadGeoJson('contrib/WINCHESTER.geojson');
+             contribLayer.loadGeoJson('contrib/WINTHROP.geojson');
+             contribLayer.loadGeoJson('contrib/WOBURN.geojson');
+             contribLayer.setStyle({
+             fillColor: 'black',
+             fillOpacity: 0.1,
+             strokeWeight: 1,
+             strokeColor: 'darkgrey',
+             strokeOpacity: 0
+
+             });
+             contribLayer.setMap(map);
+
+
+
+
+
+            /*            map.data.addListener('click', function (event) {
+             if (event.feature.getGeometry().getType() === 'Polygon') {
+             var myHTML = event.feature.getProperty("TOWN");
+             infowindow.setContent("<div style='width:150px; text-align: center;'>"+myHTML+"</div>");
+             infowindow.setPosition(event.feature.getGeometry().center);
+             // infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
+             infowindow.open(map);
+             };
+             });*/
+
+
+
+
             var townsLayer = new google.maps.Data();
 
             townsLayer.loadGeoJson('towns/ARLINGTON.geojson');
@@ -65,53 +119,187 @@
                 fillOpacity: 0.3,
                 strokeWeight: 2,
                 strokeColor: 'darkgrey',
-                strokeOpacity: 0
+                strokeOpacity: 0.2
 
+            });
+
+
+            var fsize = 16
+
+            var mapLabel = new MapLabel({
+                text: 'Wilmington',
+                position: new google.maps.LatLng(42.56117285531808, -71.16737365722656),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Reading',
+                position: new google.maps.LatLng(42.53638605645048, -71.10763549804688),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Wakefield',
+                position: new google.maps.LatLng(42.503237310899706, -71.06678009033203),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+            var mapLabel = new MapLabel({
+                text: 'Melrose',
+                position: new google.maps.LatLng(42.456647545121605, -71.06128692626953),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Malden',
+                position: new google.maps.LatLng(42.43308625978409, -71.05819702148438),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Revere',
+                position: new google.maps.LatLng(42.415853045217105, -71.01081848144531),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Boston',
+                position: new google.maps.LatLng(42.37427109825652, -71.0317611694336),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Chelsea',
+                position: new google.maps.LatLng(42.39684032976027, -71.03347778320312),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Stoneham',
+                position: new google.maps.LatLng(42.47437600081553, -71.0983657836914),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Medford',
+                position: new google.maps.LatLng(42.42827157377847, -71.11141204833984),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Watertown',
+                position: new google.maps.LatLng(42.37427109825652, -71.17835998535156),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Lexington',
+                position: new google.maps.LatLng(42.444994683542305, -71.23432159423828),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Woburn',
+                position: new google.maps.LatLng(42.48399791711918, -71.15364074707031),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Winthrop',
+                position: new google.maps.LatLng(42.37883631647602, -70.9830093383789),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Burlington',
+                position: new google.maps.LatLng(42.50095927057959, -71.20513916015625),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Cambridge',
+                position: new google.maps.LatLng(42.36919824433563, -71.10626220703125),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Somerville',
+                position: new google.maps.LatLng(42.38872648408929, -71.10111236572266),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Winchester',
+                position: new google.maps.LatLng(42.44980808481614, -71.1478042602539),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Belmont',
+                position: new google.maps.LatLng(42.3945584166865, -71.1800765991211),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Everett',
+                position: new google.maps.LatLng(42.40698116175212, -71.05751037597656),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+            var mapLabel = new MapLabel({
+                text: 'Arlington',
+                position: new google.maps.LatLng(42.41965489682774, -71.16703033447266),
+                map: map,
+                fontSize: fsize,
+                align: 'center'
+            });
+
+
+            townsLayer.addListener('click', function (event) {
+                console.log(event.latLng.toString());
             });
 
             townsLayer.setMap(map);
 
-            var contribLayer = new google.maps.Data();
-            contribLayer.loadGeoJson('contrib/ARLINGTON.geojson');
-            contribLayer.loadGeoJson('contrib/BELMONT.geojson');
-            contribLayer.loadGeoJson('contrib/BOSTON.geojson');
-            contribLayer.loadGeoJson('contrib/BURLINGTON.geojson');
-            contribLayer.loadGeoJson('contrib/CAMBRIDGE.geojson');
-            contribLayer.loadGeoJson('contrib/CHELSEA.geojson');
-            contribLayer.loadGeoJson('contrib/EVERETT.geojson');
-            contribLayer.loadGeoJson('contrib/LEXINGTON.geojson');
-            contribLayer.loadGeoJson('contrib/MALDEN.geojson');
-            contribLayer.loadGeoJson('contrib/MEDFORD.geojson');
-            contribLayer.loadGeoJson('contrib/MELROSE.geojson');
-            contribLayer.loadGeoJson('contrib/READING.geojson');
-            contribLayer.loadGeoJson('contrib/REVERE.geojson');
-            contribLayer.loadGeoJson('contrib/SOMERVILLE.geojson');
-            contribLayer.loadGeoJson('contrib/STONEHAM.geojson');
-            contribLayer.loadGeoJson('contrib/WAKEFIELD.geojson');
-            contribLayer.loadGeoJson('contrib/WATERTOWN.geojson');
-            contribLayer.loadGeoJson('contrib/WILMINGTON.geojson');
-            contribLayer.loadGeoJson('contrib/WINCHESTER.geojson');
-            contribLayer.loadGeoJson('contrib/WINTHROP.geojson');
-            contribLayer.loadGeoJson('contrib/WOBURN.geojson');
-            contribLayer.setStyle({
-                fillColor: 'red',
-                fillOpacity: 0.5,
-                strokeWeight: 1,
-                strokeColor: 'darkgrey',
-                strokeOpacity: 0.7
-
-            });
-            contribLayer.setMap(map);
-
-/*            map.data.addListener('click', function (event) {
-                if (event.feature.getGeometry().getType() === 'Polygon') {
-                    var myHTML = event.feature.getProperty("TOWN");
-                    infowindow.setContent("<div style='width:150px; text-align: center;'>"+myHTML+"</div>");
-                    infowindow.setPosition(event.feature.getGeometry().center);
-                   // infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
-                    infowindow.open(map);
-                };
-            });*/
         }
     </script>
 </head>
