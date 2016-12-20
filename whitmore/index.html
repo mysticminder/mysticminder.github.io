@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        <script src="https://code.jquery.com/jquery-1.9.0.js"></script>
+        <script src="js/imageReveal.js"></script>
+        <link rel="stylesheet" href="css/imageReveal.css" />
+        <style>
+            body{
+                background: white; 
+                color: black;
+                } 
+            #example1{
+                margin: 0 auto;
+                margin-top: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1> The Lost Whitmore Brook </h1>
+        <div class="row big" >
+            <div id="example1" class="imageReveal">
+                <img src="img/before.png">
+                <img src="img/after.png">
+
+            </div>
+            <div>
+
+            <div style="margin: 0 auto; margin-top: 25px; width: 800px">
+                <p> View looking northwest from intersection of Playstead Road and Madison Street in West Medford, MA. 
+                <p> A stone bridge crossing Whitmore Brook can be seen in the upper left quarter of the 1903 photograph. Around 1915 the stream was encased in a covered drain.</p>
+
+                <br>
+                <p><i>Photo Credits:</i></p>
+                <ul>    
+                <li>    (Left) March 25th, 1903: Harold B. George, reproduced form <i> Medford on the Mystic </i> by Carl And Alan Seaburg and published by the Medford Historical Society in 1980. </li>
+                <br>
+                <li>    (Right) December 18th, 2016: Kevin M. Smith</li>
+
+            </div>
+        </div>
+
+
+
+        <script>
+            $(window).load(function() {
+                $('#example1').imageReveal({
+                    barWidth: 15,
+                    touchBarWidth: 40,
+                    paddingLeft: 0,
+                    paddingRight: 0,
+                    startPosition: 0.20,
+                    showCaption: true,
+                    captionChange: 0.5,
+                    captionFade: 1000,
+                    linkCaption: true,
+                    width: 851,
+                    height: 506,
+                });
+
+            });
+        </script>
+
+    </body>
+</html>
