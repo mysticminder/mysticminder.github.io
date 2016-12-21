@@ -332,6 +332,12 @@
                         function(feature){
                             if(feature.getProperty("TOWN") != town)
                                 activeLayer.remove(feature);
+                        }
+                    );
+                    
+                    activeLayer2.forEach(
+                        function(feature){
+                            if(feature.getProperty("TOWN") != town)
                                 activeLayer2.remove(feature);
                         }
                     );
