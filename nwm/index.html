@@ -341,6 +341,14 @@
                         strokeOpacity: 0.2
 
                     });
+                    activeLayer.loadGeoJson('towns/' + event.feature.getProperty("TOWN").toString() + ".geojson")
+                    activeLayer.setStyle({
+                        fillColor: 'yellow',
+                        fillOpacity: 0.0,
+                        strokeWeight: 2,
+                        strokeColor: 'yellow',
+                        strokeOpacity: 0.5
+                    });
                 }
 
                 var priors = document.getElementsByClassName("selected");
@@ -360,7 +368,7 @@
                 console.log(town);
 
                 document.getElementById(town).setAttribute("class", "selected");
-
+                
 
 
             });
