@@ -128,6 +128,9 @@
 
             var activeLayer = new google.maps.Data();
             activeLayer.setMap(map);
+            
+            var activeLayer2 = new google.maps.Data();
+            activeLayer2.setMap(map);
 
 
             var fsize = 16
@@ -331,6 +334,13 @@
                                 activeLayer.remove(feature);
                         }
                     );
+                    
+                    activeLayer2.forEach(
+                        function(feature){
+                            if(feature.getProperty("TOWN") != town)
+                                activeLayer.remove(feature);
+                        }
+                    );
 
                     activeLayer.loadGeoJson('contrib/' + event.feature.getProperty("TOWN").toString() + ".geojson")
                     activeLayer.setStyle({
@@ -341,8 +351,8 @@
                         strokeOpacity: 0.2
 
                     });
-                    activeLayer.loadGeoJson('towns/' + event.feature.getProperty("TOWN").toString() + ".geojson")
-                    activeLayer.setStyle({
+                    activeLayer2.loadGeoJson('towns/' + event.feature.getProperty("TOWN").toString() + ".geojson")
+                    activeLayer2.setStyle({
                         fillColor: 'yellow',
                         fillOpacity: 0.0,
                         strokeWeight: 2,
