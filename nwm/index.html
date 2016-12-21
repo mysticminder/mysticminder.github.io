@@ -326,7 +326,7 @@
                 console.log(event.latLng.toString());
                 var town = event.feature.getProperty("TOWN");
 
-                if(first){
+                if(first == 1){
                   $("#legend").load("img/selected.png");
                   first = 0; 
                 }
