@@ -318,19 +318,13 @@
              };
              });*/
 
-            var first = 1; 
-
             townsLayer.addListener('click', function (event) {
 
 
                 console.log(event.latLng.toString());
                 var town = event.feature.getProperty("TOWN");
 
-                console.log(first);
-                if(first == 1){
-                  $("#legend").load("img/selected.png");
-                  first = 0; 
-                }
+                document.getElementById("legend").setAttribute("src","img/selected.png")
 
                 var redraw = function(){
                     activeLayer.forEach(
