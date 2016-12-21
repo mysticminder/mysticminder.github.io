@@ -318,7 +318,7 @@
              };
              });*/
 
-            var first = True; 
+            var first = 1; 
 
             townsLayer.addListener('click', function (event) {
 
@@ -328,6 +328,7 @@
 
                 if(first){
                   $("#legend").load("img/selected.png");
+                  first = 0; 
                 }
 
                 var redraw = function(){
